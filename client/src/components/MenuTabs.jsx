@@ -5,6 +5,10 @@ import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 
 function MenuTabs() {
   const [tabValue, setTabValue] = useState(0);
+  const [showDropdown, setShowDropdown] = useState({
+    display: "none",
+    transform: "translateY(-20px)",
+  });
   const tabs = [
     { id: 1, text: "All Tasks" },
     { id: 2, text: "Important Tasks" },
@@ -12,6 +16,16 @@ function MenuTabs() {
     { id: 4, text: "Uncompleted Tasks" },
     { id: 5, text: "Directories" },
   ];
+
+  const handleOpenDropDown = (e) => {
+    if (e.target.children[0].style.transform === "rotate(90deg)") {
+      e.target.children[0].style.transform = "rotate(0)";
+      setShowDropdown({ display: "none", transform: "translateY(-20px)" });
+    } else {
+      e.target.children[0].style.transform = "rotate(90deg)";
+      setShowDropdown({ display: "block", transform: "translateY(0)" });
+    }
+  };
 
   return (
     <Tabs
@@ -60,12 +74,18 @@ function MenuTabs() {
                 marginBottom: "-3px",
               },
             }}
+            onClick={handleOpenDropDown}
           />
         ) : (
           <Tab key={tabs.id} label={tab.text} />
         )
       )}
-      <MenuTabDropDown />
+      <MenuTabDropDown
+        style={{
+          display: showDropdown.display,
+          transform: showDropdown.transform,
+        }}
+      />
     </Tabs>
   );
 }

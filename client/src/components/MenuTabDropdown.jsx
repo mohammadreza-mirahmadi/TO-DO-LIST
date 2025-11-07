@@ -3,9 +3,17 @@ import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 
-function MenuTabDropDown() {
+function MenuTabDropDown({ style }) {
+  // TODO: fix the problem of tabs moving when using dropdown
+
   return (
-    <Box>
+    <Box
+      sx={{
+        display: style.display,
+        transform: style.transform,
+        transition: "all 2s ease-in", // TODO: fix transition
+      }}
+    >
       <Tab
         icon={
           <>
@@ -16,11 +24,13 @@ function MenuTabDropDown() {
         iconPosition="end"
         label={"Main"}
         sx={{
+          // TODO: There should be space between miniBtns and text
           "& .MuiTab-icon": { marginBottom: "-3px", marginLeft: "4px" },
           justifyContent: "space-between",
           width: "100%",
         }}
       />
+      {/* TODO: fix styles of button */}
       <Button
         variant="outlined"
         color="error.main"

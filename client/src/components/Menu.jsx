@@ -7,10 +7,11 @@ function Menu() {
     <Box
       component="div"
       sx={{
-        width: { xs: "14rem", sm: "16rem", lg: "18rem" },
+        width: { xs: "14rem", sm: "16rem" },
         height: "100vh",
         backgroundColor: "background.paper",
         display: { xs: "block", md: "block" },
+        marginLeft: { xs: "-14rem", sm: "-16rem", md: "0rem" },
       }}
     >
       <Container sx={{ paddingTop: "2rem" }}>
